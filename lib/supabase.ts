@@ -1,10 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn("Supabase credentials missing. Form submission will fail until .env is updated.");
-}
+// We use placeholders here to prevent the Vercel build from failing if the 
+// environment variables haven't been set in the dashboard yet.
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://tmp.supabase.co";
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "tmp";
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
